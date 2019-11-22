@@ -107,7 +107,25 @@ void setup(){
  // EEPROM.put(100, 5000);  // !!!ONLY USE THE VERY FIRST TIME LOADING TEENSY!!!
 }
 
+long previousMillis_avg = 0;
+
+//TIME FOR AVERAGES
+#define MINUTES(x) (60000*x)
+#define SECONDS(x) (1000*x)
+long mins = MINUTES(5);
+long interval_average = mins;      
+
+
 void loop(){
+
+//Section for timed checks
+unsigned long current_time_avg = millis();
+if(current_time_avg - previousMillis_avg > interval_average) {
+    // save the last time you blinked the LED 
+    previousMillis_avg = current_time_avg;   
+    // call averaging function
+    Average_results();
+  }
  // Serial.println("H");
         // read from the sensor and add into array
       Pre.addValue(analogRead(PrePin));
@@ -137,6 +155,7 @@ void loop(){
 }
 
 void initialize() {
+  
   myindex = 0;
   average_P =0;
   average_O = 0;
@@ -152,7 +171,14 @@ void initialize() {
   Input = 0.0;
   Output = 0.0;
   Setpoint = 0.0;
-  //myPID.Initialize();
+}
+
+
+
+void Average_results(){
+//
+double PMvalue;
+
 }
 
 void PumpSlowShutDown(){
