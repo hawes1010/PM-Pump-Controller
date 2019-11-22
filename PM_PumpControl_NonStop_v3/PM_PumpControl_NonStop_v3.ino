@@ -5,7 +5,7 @@
   -tunid pid to p=3,i=2,d=.3 
 */
 
-//Hawes is working on this 
+
 #include <EEPROM.h>
 #include <PID_v1.h>
 #include <Wire.h>
@@ -152,7 +152,7 @@ void initialize() {
   Input = 0.0;
   Output = 0.0;
   Setpoint = 0.0;
-  myPID.Initialize();
+  //myPID.Initialize();
 }
 
 void PumpSlowShutDown(){
