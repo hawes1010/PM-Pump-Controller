@@ -1,0 +1,6 @@
+# Help Guide to get Started
+1. Firstly, clone the library for the PM-Pump-Controller
+2.Go to Manage Libraries --> Ctrl+Shift+I or Tools--> Manage Libraries--> 
+3.Install PID by Brett Beauregard
+4. go to https://github.com/RobTillaart/Arduino and clone or download his repo there called Arduino.
+5. WIP
