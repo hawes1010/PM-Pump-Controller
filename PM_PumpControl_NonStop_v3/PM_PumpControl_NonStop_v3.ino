@@ -174,11 +174,12 @@ void initialize() {
 }
 
 
-
+double total = 0;
+long counter = 0;
 void Average_results(){
-//
+// PM value we are reading in needs to get read out every 5 mins
 double PMvalue;
-
+// Begin Building Report of Average
 }
 
 void PumpSlowShutDown(){
