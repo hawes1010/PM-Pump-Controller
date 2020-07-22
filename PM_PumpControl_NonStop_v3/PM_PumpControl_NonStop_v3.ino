@@ -52,10 +52,10 @@ float vout;
 float pressure;
 
 // Pin assignments
-const int PrePin = A7;          // Pressure sensor pin
+//const int PrePin = A7;          // Pressure sensor pin
 const int AdjustPin = A9;       // Potentiometer pin
 const int StandbyPin = 13;      // Motor board standby pin
-const int inPin = 17;           // Read command from mainboard
+const int inPin = 14;           // Read command from mainboard
 //const int SDAPin = 18;          // SDA pin for I2C
 //const int SCLPin = 19;          // SCL pin for I2C
 const int PWMPin = 20;          // PWM output to motor control board
@@ -85,9 +85,9 @@ void setup(){
  // Wire.begin(4); // use foe VOC pump
   Wire.onRequest(requestEvent); // register event for I2C with mainboard
   Wire.onReceive(receiveEvent);
-  analogReadRes(13); // Set Teensy analog resolution to 13 bits
+  //analogReadRes(13); // Set Teensy analog resolution to 13 bits
   pinMode(PWMPin, OUTPUT);    
-  pinMode(PrePin, INPUT);
+  //pinMode(PrePin, INPUT);
   pinMode(StandbyPin, OUTPUT);
   pinMode(inPin, INPUT);
   digitalWrite(inPin,LOW);
@@ -128,9 +128,9 @@ if(current_time_avg - previousMillis_avg > interval_average) {
   }
  // Serial.println("H");
         // read from the sensor and add into array
-      Pre.addValue(analogRead(PrePin));
+     //Pre.addValue(analogRead(PrePin));
       // advance to the next position in the array:
-        average_P = Pre.getAverage();  
+        //average_P = Pre.getAverage();  
   
   if (nopid == 0){
     //Serial.println("H");
@@ -236,11 +236,11 @@ void PIDMain(){                   // PID main function
 
 void requestEvent()  // function that executes whenever data is requested by main
 {
-  //Serial.println("H");
+  Serial.println("H");
   //Serial.println("Request");
   char PresArray[12];
   String str;
-  str = String(PumpStatus) + ',' + int(average_P) + ',' + int(pumpspeed);
+  str = String(PumpStatus) + ',' + int(1000) + ',' + int(333);
   str.toCharArray(PresArray,12);
   Wire.print(PresArray);
  //  Serial.println(PresArray);
